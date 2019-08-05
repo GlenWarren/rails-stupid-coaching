@@ -4,7 +4,9 @@ class QuestionsController < ApplicationController
 
   def answer
     @question = params[:question]
-    if params[:question] == 'I am going to work'
+    if params[:question].blank?
+      @answer = 'Did you forget to do something?'
+    elsif params[:question] == 'I am going to work'
       @answer = 'Great!'
     elsif params[:question][-1] == '?'
       @answer = 'Silly question, get dressed and go to work!'
